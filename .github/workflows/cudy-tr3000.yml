@@ -112,7 +112,7 @@ jobs:
         if: (!cancelled())
         run: df -hT
 
-      # 修改 bin 目录的 artifact 名称
+      # 修改 bin 目录的 artifact 名称 upload-artifact@v4
       - name: Upload bin directory
         uses: actions/upload-artifact@main
         if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
@@ -136,7 +136,7 @@ jobs:
           MD5=$(md5sum * | awk '{ print $2 " " $1 }' | sed ':a;N;$!ba;s/\n/<br>/g')
           echo "MD5=$MD5" >> $GITHUB_ENV
 
-      # 修改固件的 artifact 名称
+      # 修改固件的 artifact 名称 upload-artifact@v4
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
         if: steps.organize.outputs.status == 'success' && !cancelled()
@@ -153,6 +153,7 @@ jobs:
           # [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
           echo "status=success" >> $GITHUB_OUTPUT
 
+      # uses: softprops/action-gh-release@v2
       - name: Upload firmware to release
         uses: softprops/action-gh-release@master
         if: steps.tag.outputs.status == 'success' && !cancelled()
@@ -162,11 +163,11 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body: |
-            - 本项目是基于237源代码编译，使用默认配置，适用于TR3000设备，纯净版无任何第三方软件包。
+            - 本项目是基于237源代码编译，使用默认配置，适用于TR3000等带USB接口的设备，纯净版无任何第三方软件包。
             - cudy-tr3000.yml
             - 默认IP：192.168.6.1
             - 默认账号：root
-            - 默认密码：password
+            - 默认密码：空
             - 源码更新详情[点击这里查看](https://github.com/padavanonly/immortalwrt-mt798x-6.6)
             - **请仔细检查MD5以确保完整性后再进行刷入！**
             `md5信息`
