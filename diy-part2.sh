@@ -26,8 +26,8 @@ uci set network.lan.ipaddr='192.168.6.1'
 uci commit network
 for radio in \$(uci show wireless | grep '=wifi-device' | cut -d'.' -f2 | cut -d'=' -f1);do
     uci set wireless.\$radio.disabled='0'
-    #uci set wireless.default_\$radio.ssid='Cudy'
-    #uci set wireless.default_radio1.ssid='Cudy-5G'
+    #uci set wireless.default_\$radio.ssid='Immortalwrt'
+    #uci set wireless.default_radio1.ssid='Immortalwrt-5G'
     uci set wireless.default_\$radio.encryption='psk-mixed'
     uci set wireless.default_\$radio.key='1234567890'
 done
