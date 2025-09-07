@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: cudy tr3000
+name: multi_profile
 
 on:
   repository_dispatch:
