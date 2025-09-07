@@ -164,7 +164,7 @@ jobs:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body: |
             - 本项目是基于237源代码编译，使用默认配置，适用于TR3000等带USB接口的设备，纯净版无任何第三方软件包。
-            - cudy-tr3000.yml
+            - multi_profile.yml
             - 默认IP：192.168.6.1
             - 默认账号：root
             - 默认密码：空
