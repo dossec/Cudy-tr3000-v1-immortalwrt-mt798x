@@ -77,6 +77,8 @@ jobs:
       WRT_BRANCH: ${{matrix.REPO_INFO.BRANCH}}
       #源码名称
       WRT_SOURCE: ${{matrix.REPO_INFO.SOURCE}}
+      #包名称
+      WRT_RELEASE: immortalwrt
       #插件调整
       WRT_PACKAGE: ${{inputs.PACKAGE}}
       #仅输出配置文件
